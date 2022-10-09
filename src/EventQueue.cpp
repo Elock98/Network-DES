@@ -1,7 +1,13 @@
 #include "EventQueue.h"
 
+bool compareExecTime(Event* e1, Event* e2)
+{
+    return (e1->get_time() < e2->get_time());
+}
+
 void EventQueue::sort_queue(){
-    std::sort(queue.begin(), queue.end());
+    std::sort(queue.begin(), queue.end(), compareExecTime);
+    std::reverse(queue.begin(), queue.end());
 }
 
 // Removes the next event from the queue and returns it.
