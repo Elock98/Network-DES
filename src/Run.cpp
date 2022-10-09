@@ -10,9 +10,6 @@ int main(){
     Node node2(2, &q);
     Link link(&node1, &node2, 0.4, &q);
 
-    node1.set_link(&link);
-    node2.set_link(&link);
-
     q.add_event(new SendEvent(&node1, 0.0, "The first message sent!"));
     SimEngine eng(&q);
     eng.run();

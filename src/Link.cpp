@@ -5,6 +5,10 @@ using namespace std;
 Link::Link(Node* node1, Node* node2, double propagation_delay, EventQueue* queue){
     addr1 = node1;
     addr2 = node2;
+
+    addr1->set_link(this);
+    addr2->set_link(this);
+
     delay = propagation_delay;
     q = queue;
 }
