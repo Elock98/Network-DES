@@ -7,7 +7,6 @@ SendEvent::SendEvent(Node* self, double time, std::string message){
 }
 
 void SendEvent::execute(){
-    std::cout << "In send event exec!" << std::endl;
     _self->send(msg, exec_time);
 }
 
