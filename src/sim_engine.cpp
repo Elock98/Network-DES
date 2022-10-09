@@ -9,6 +9,7 @@ SimEngine::SimEngine(EventQueue* queue){
 void SimEngine::run(){
 
     while(!q->is_empty()){
+        cout << "-----------Event-----------" << endl;
         Event* e = q->get_event();
         cout << "Event time: " << e->get_time() << endl;
         e->execute();
