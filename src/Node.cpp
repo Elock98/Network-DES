@@ -7,7 +7,7 @@ Node::Node(int ip, EventQueue* queue){
 
 void Node::send(std::string msg, double time){
     std::cout << "Sending message from ip: " << ip_addr << std::endl;
-    conn->transmit("message", ip_addr, time);
+    conn->transmit(msg, ip_addr, time);
 }
 
 void Node::recv(std::string msg){
