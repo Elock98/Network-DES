@@ -11,7 +11,7 @@ void Node::send(std::string msg, double time){
 }
 
 void Node::recv(std::string msg){
-    std::cout << "Recv: " << msg << std::endl;
+    std::cout << "Node with ip " << ip_addr << " received message: " << msg << std::endl;
 }
 
 void Node::set_link(Link* l){
