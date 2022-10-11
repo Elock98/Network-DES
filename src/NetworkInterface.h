@@ -12,7 +12,7 @@ class NetInterface{
         std::string net_str;
 
     public:
-        NetInterface(std::string network_part, std::string host_part);
+        NetInterface(std::string ip, std::string subnet_mask);
 
         std::string get_network_addr();
         std::string get_host_addr();
