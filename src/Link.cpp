@@ -13,7 +13,7 @@ Link::Link(Node* node1, Node* node2, double propagation_delay, EventQueue* queue
     q = queue;
 }
 
-void Link::transmit(string msg, int self, double current_time){
+void Link::transmit(string msg, string self, double current_time){
     if(self == addr1->get_addr()){
         //Create recv event for node2
         cout << "Sending '" << msg << "' over link from ip " << addr1->get_addr() << " to ip " << addr2->get_addr() << endl;

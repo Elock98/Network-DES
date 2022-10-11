@@ -19,6 +19,6 @@ class Link{
 
     public:
         Link(Node* node1, Node* node2, double propagation_delay, EventQueue* queue);
-        void transmit(std::string msg, int self, double current_time); // int self is temp (will be taken from header later)
+        void transmit(std::string msg, std::string self, double current_time); // string self is temp (will be taken from header later)
 };
 #endif
