@@ -5,11 +5,15 @@
 #include <vector>
 #include <sstream>
 #include <bitset>
+#include <iostream>
 
 class NetInterface{
     private:
         std::string ip_str;
         std::string net_str;
+
+        int ip_check(std::string ip);
+        int subnet_check(std::string mask);
 
     public:
         NetInterface(std::string ip, std::string subnet_mask);
