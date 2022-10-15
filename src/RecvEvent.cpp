@@ -1,6 +1,6 @@
 #include "RecvEvent.h"
 
-RecvEvent::RecvEvent(Node *self, double time, std::string message){
+RecvEvent::RecvEvent(Connection* self, double time, std::string message){
     _self = self;
     exec_time = time;
     msg = message;
