@@ -14,8 +14,18 @@ void Node::recv(std::string msg){
     std::cout << "Node with ip " << _interface->get_ip_addr() << " received message: " << msg << std::endl;
 }
 
-void Node::set_link(Link* l){
+void Node::connect_link(Link* l){
     conn = l;
+    conn->connect_link(this);
+}
+
+void Node::disconnect_link(){
+    if(conn == NULL){
+        std::cout << "No link to disconnect!" << std::endl;
+        return;
+    }
+    conn->disconnect_link(this);
+    conn = NULL;
 }
 
 std::string Node::get_addr(){

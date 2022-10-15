@@ -18,7 +18,8 @@ class Node: public Connection{
 
     public:
         Node(NetInterface* interface, EventQueue* queue);
-        void set_link(Link* l);
+        void connect_link(Link* l);
+        void disconnect_link();
         std::string get_addr();
         void send(std::string msg, double time); //Should take dest ip and message
         void recv(std::string msg); //Should take pointer to packet
