@@ -7,7 +7,7 @@ Node::Node(NetInterface* interface, EventQueue* queue){
 
 void Node::send(std::string msg, double time){
     std::cout << "Sending message from ip: " << _interface->get_ip_addr() << std::endl;
-    conn->transmit(msg, _interface->get_ip_addr(), time);
+    conn->transmit(msg, this, time);
 }
 
 void Node::recv(std::string msg){

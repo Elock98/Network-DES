@@ -3,13 +3,14 @@
 #include "EventQueue.h"
 #include "Link.h"
 #include "NetworkInterface.h"
+#include "ConnectionInterface.h"
 #include <string>
 #include <iostream>
 
 class Link;
 class NetInterface;
 
-class Node{
+class Node: public Connection{
     private:
         NetInterface* _interface;
         EventQueue* q;
