@@ -3,6 +3,9 @@
 using namespace std;
 
 Link::Link(double propagation_delay, EventQueue* queue){
+    _conn1 = NULL;
+    _conn2 = NULL;
+
     delay = propagation_delay;
     q = queue;
 }
@@ -13,9 +16,9 @@ void Link::connect_link(Connection* new_conn){
         else if conn2 is free set conn2 = new_conn
         else message error "Link cannot connect to more than 2 devices!"
     */
-    if(new_conn == _conn1){
+    if(_conn1 == NULL){
         _conn1 = new_conn;
-    }else if(new_conn == _conn2){
+    }else if(_conn2 == NULL){
         _conn2 = new_conn;
     }else{
         cout << "Link cannot connect to more than 2 devices!" << endl;
