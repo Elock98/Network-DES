@@ -1,6 +1,6 @@
 #include "SendEvent.h"
 
-SendEvent::SendEvent(Node* self, double time, std::string message){
+SendEvent::SendEvent(Connection* self, double time, std::string message){
     _self = self;
     exec_time = time;
     msg = message;
