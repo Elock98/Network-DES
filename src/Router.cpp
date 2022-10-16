@@ -1,0 +1,61 @@
+#include "Router.h"
+
+using namespace std;
+
+Router::Router(EventQueue* queue, std::vector<NetInterface*> interfaces): _interfaces(interfaces.size()){
+    _q = queue;
+    _num_of_interfaces = interfaces.size();
+
+    /*
+        Check that multiple interfaces don't belong
+        to the same network. If the check passes the
+        interface can be added.
+    */
+    vector<string> network_addresses;
+    for(int i = 0; i < _num_of_interfaces; i++){
+        string addr = interfaces[i]->get_network_addr();
+        for(int i = 0; i < network_addresses.size(); i++){
+            if(addr == network_addresses[i]){
+                cout << "Two router interfaces can't belong to the same network!" << endl;
+                return;
+            }
+        }
+        network_addresses.push_back(addr);
+
+        // Add interface to router
+        _interfaces.push_back(new NetLinkPair(interfaces[i]));
+    }
+}
+
+int Router::connect_to_interface(Link* link, string interface_ip){
+    for(int i = 0; i < _interfaces.size(); i++){
+        if(_interfaces[i]->get_netInterface()->get_ip_addr() == interface_ip){
+            return _interfaces[i]->connect_link(link);
+        }
+    }
+    cout << "Router does not have an interface with IP: " << interface_ip << endl;
+    return -1;
+}
+
+int Router::disconnect_from_interface(string interface_ip){
+    for(int i = 0; i < _interfaces.size(); i++){
+        if(_interfaces[i]->get_netInterface()->get_ip_addr() == interface_ip){
+            _interfaces[i]->disconnect_link();
+            return 0;
+        }
+    }
+    cout << "Router does not have an interface with IP: " << interface_ip << endl;
+    return -1;
+}
+
+void Router::recv(std::string msg){
+    _q->add_event(new SendEvent(this, 2, msg));
+}
+
+void Router::send(std::string msg, double time){
+    /*
+        The router needs to grab dest ip from the message
+        in order to find what link to transmit the msg
+        over.
+    */
+}
