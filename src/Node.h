@@ -4,6 +4,8 @@
 #include "Link.h"
 #include "NetworkInterface.h"
 #include "ConnectionInterface.h"
+#include "Message.h"
+
 #include <string>
 #include <iostream>
 
@@ -21,7 +23,8 @@ class Node: public Connection{
         void connect_link(Link* l);
         void disconnect_link();
         std::string get_addr();
-        void send(std::string msg, double time); //Should take dest ip and message
-        void recv(std::string msg); //Should take pointer to packet
+        NetInterface* get_interface();
+        void send(Message* msg, double time);
+        void recv(Message* msg);
 };
 #endif

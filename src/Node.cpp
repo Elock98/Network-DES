@@ -5,13 +5,15 @@ Node::Node(NetInterface* interface, EventQueue* queue){
     q = queue;
 }
 
-void Node::send(std::string msg, double time){
+void Node::send(Message* msg, double time){
     std::cout << "Sending message from ip: " << _interface->get_ip_addr() << std::endl;
     conn->transmit(msg, this, time);
 }
 
-void Node::recv(std::string msg){
-    std::cout << "Node with ip " << _interface->get_ip_addr() << " received message: " << msg << std::endl;
+void Node::recv(Message* msg){
+    std::cout << "Node: " << _interface->get_ip_addr() <<
+                 "\nReceived message: " << msg->get_message() <<
+                 "\nFrom: " << msg->get_src()->get_ip_addr() << std::endl;
 }
 
 void Node::connect_link(Link* l){
@@ -30,4 +32,8 @@ void Node::disconnect_link(){
 
 std::string Node::get_addr(){
     return _interface->get_ip_addr();
+}
+
+NetInterface* Node::get_interface(){
+    return _interface;
 }
