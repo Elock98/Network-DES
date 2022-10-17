@@ -1,13 +1,13 @@
 #include "SendEvent.h"
 
-SendEvent::SendEvent(Connection* self, double time, std::string message){
+SendEvent::SendEvent(Connection* self, double time, Message* message){
     _self = self;
     exec_time = time;
-    msg = message;
+    _msg = message;
 }
 
 void SendEvent::execute(){
-    _self->send(msg, exec_time);
+    _self->send(_msg, exec_time);
 }
 
 double SendEvent::get_time(){

@@ -3,6 +3,7 @@
 
 #include "EventQueue.h"
 #include "ConnectionInterface.h"
+#include "Message.h"
 
 #include <string>
 #include <iostream>
@@ -10,10 +11,10 @@
 class SendEvent: public Event{
     private:
         Connection* _self;
-        std::string msg;
+        Message* _msg;
 
     public:
-        SendEvent(Connection* self, double time, std::string message);
+        SendEvent(Connection* self, double time, Message* message);
         void execute();
         double get_time();
 };
