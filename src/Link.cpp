@@ -40,7 +40,7 @@ void Link::disconnect_link(Connection* rm_conn){
     }
 }
 
-void Link::transmit(string msg, Connection* self, double current_time){
+void Link::transmit(Message* msg, Connection* self, double current_time){
     if(_conn1 == NULL || _conn2 == NULL){
         cout << "Message cannot be sent over link, there needs to be two devices connected!" << endl;
         return;
@@ -48,11 +48,11 @@ void Link::transmit(string msg, Connection* self, double current_time){
 
     if(self == _conn1){
         //Create recv event for node2
-        cout << "Sending '" << msg << "' over link" << endl;
+        cout << "Sending '" << msg->get_message() << "' over link" << endl;
         q->add_event(new RecvEvent(_conn2, current_time + delay, msg));
     }else if(self == _conn2){
         //Create recv event for node1
-        cout << "Sending '" << msg << "' over link" << endl;
+        cout << "Sending '" << msg->get_message() << "' over link" << endl;
         q->add_event(new RecvEvent(_conn1, current_time + delay, msg));
     }else{
         cout << "Error occured on link." << endl;
