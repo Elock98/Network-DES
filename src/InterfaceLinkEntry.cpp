@@ -15,7 +15,6 @@ void NetLinkPair::disconnect_link(){
 int NetLinkPair::connect_link(Link* link){
     if(_link == NULL){
         _link = link;
-        cout << "New link connected to interface: " << _interface->get_ip_addr() << endl;
         return 0;
     }else{
         cout << "Link cannot be connected to interface: " << _interface->get_ip_addr() << " . Another link is already connected!" << endl;
