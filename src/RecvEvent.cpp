@@ -1,13 +1,13 @@
 #include "RecvEvent.h"
 
-RecvEvent::RecvEvent(Connection* self, double time, std::string message){
+RecvEvent::RecvEvent(Connection* self, double time, Message* message){
     _self = self;
     exec_time = time;
-    msg = message;
+    _msg = message;
 }
 
 void RecvEvent::execute(){
-    _self->recv(msg);
+    _self->recv(_msg);
 }
 
 double RecvEvent::get_time(){
