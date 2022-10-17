@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Router::Router(EventQueue* queue, std::vector<NetInterface*> interfaces): _interfaces(interfaces.size()){
+Router::Router(EventQueue* queue, std::vector<NetInterface*> interfaces){
     _q = queue;
     _num_of_interfaces = interfaces.size();
 
@@ -30,7 +30,13 @@ Router::Router(EventQueue* queue, std::vector<NetInterface*> interfaces): _inter
 int Router::connect_to_interface(Link* link, string interface_ip){
     for(int i = 0; i < _interfaces.size(); i++){
         if(_interfaces[i]->get_netInterface()->get_ip_addr() == interface_ip){
-            return _interfaces[i]->connect_link(link);
+            if(_interfaces[i]->connect_link(link) < 0){
+                cout << "Could not connect..." << endl;
+                return -1;
+            }else{
+                link->connect_link(this);
+                return 0;
+            }
         }
     }
     cout << "Router does not have an interface with IP: " << interface_ip << endl;
@@ -48,14 +54,24 @@ int Router::disconnect_from_interface(string interface_ip){
     return -1;
 }
 
-void Router::recv(std::string msg){
-    _q->add_event(new SendEvent(this, 2, msg));
+void Router::recv(Message* msg){
+    cout << "Router received a message\n" <<
+            "From: " << msg->get_src()->get_ip_addr() <<
+            "\nTo: " << msg->get_dst()->get_ip_addr() << endl;
+    _q->add_event(new SendEvent(this, 2, msg)); // change delay from 2 later
 }
 
-void Router::send(std::string msg, double time){
+void Router::send(Message* msg, double time){
     /*
         The router needs to grab dest ip from the message
         in order to find what link to transmit the msg
         over.
     */
+    std::string dst = msg->get_dst()->get_network_addr();
+    for(int i = 0; i < _interfaces.size(); i++){
+        if(_interfaces[i]->get_netInterface()->get_network_addr() == dst){
+            _interfaces[i]->get_link()->transmit(msg, this, 2);
+            return;
+        }
+    }
 }

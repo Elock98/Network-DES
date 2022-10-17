@@ -6,6 +6,8 @@
 #include "NetworkInterface.h"
 #include "InterfaceLinkEntry.h"
 #include "ConnectionInterface.h"
+#include "Message.h"
+#include "SendEvent.h"
 
 #include <string>
 #include <iostream>
@@ -13,6 +15,7 @@
 
 class Link;
 class NetInterface;
+class NetLinkPair;
 
 class Router: public Connection{
     private:
@@ -24,12 +27,12 @@ class Router: public Connection{
     public:
         Router(EventQueue* queue, std::vector<NetInterface*> interfaces);
 
-        int connect_to_interface(Link* link, NetInterface* interface);
-        int disconnect_from_interface(NetInterface* interface);
+        int connect_to_interface(Link* link, std::string interface);
+        int disconnect_from_interface(std::string interface);
 
-        void recv(std::string msg);
+        void recv(Message* msg);
 
-        void send(std::string msg, double time);
+        void send(Message* msg, double time);
 };
 
 #endif
