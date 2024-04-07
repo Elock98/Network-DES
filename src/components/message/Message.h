@@ -1,7 +1,7 @@
 #ifndef _MESSAGE_H_
 #define _MESSAGE_H_
 
-#include "NetworkInterface.h"
+#include "../linking/NetworkInterface.h"
 
 #include <string>
 

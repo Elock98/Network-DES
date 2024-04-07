@@ -1,10 +1,10 @@
 #ifndef _NODE_H_
 #define _NODE_H_
-#include "EventQueue.h"
-#include "Link.h"
-#include "NetworkInterface.h"
-#include "ConnectionInterface.h"
-#include "Message.h"
+#include "../event/EventQueue.h"
+#include "../linking/Link.h"
+#include "../linking/NetworkInterface.h"
+#include "../linking/ConnectionInterface.h"
+#include "../message/Message.h"
 
 #include <string>
 #include <iostream>

@@ -1,9 +1,9 @@
 #ifndef _LINK_H_
 #define _LINK_H_
-#include "EventQueue.h"
-#include "RecvEvent.h"
+#include "../event/EventQueue.h"
+#include "../event/RecvEvent.h"
 #include "ConnectionInterface.h"
-#include "Message.h"
+#include "../message/Message.h"
 
 #include <string>
 #include <iostream>

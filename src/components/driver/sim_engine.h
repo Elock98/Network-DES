@@ -1,6 +1,6 @@
 #ifndef _SIM_ENGINE_H_
 #define _SIM_ENGINE_H_
-#include "EventQueue.h"
+#include "../event/EventQueue.h"
 #include <iostream>
 
 class SimEngine{

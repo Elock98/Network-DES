@@ -1,12 +1,12 @@
-#include "EventQueue.h"
-#include "sim_engine.h"
-#include "Node.h"
-#include "Link.h"
-#include "SendEvent.h"
-#include "NetworkInterface.h"
+#include "components/event/EventQueue.h"
+#include "components/driver/sim_engine.h"
+#include "components/device/Node.h"
+#include "components/linking/Link.h"
+#include "components/event/SendEvent.h"
+#include "components/linking/NetworkInterface.h"
 //#include "ConstantBitRateGenerator.h"
-#include "Message.h"
-#include "Router.h"
+#include "components/message/Message.h"
+#include "components/device/Router.h"
 
 
 #include <iostream>

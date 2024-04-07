@@ -2,8 +2,8 @@
 #define _SEND_EVENT_H_
 
 #include "EventQueue.h"
-#include "ConnectionInterface.h"
-#include "Message.h"
+#include "../linking/ConnectionInterface.h"
+#include "../message/Message.h"
 
 #include <string>
 #include <iostream>

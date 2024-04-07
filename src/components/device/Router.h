@@ -1,13 +1,13 @@
 #ifndef _ROUTER_H_
 #define _ROUTER_H_
 
-#include "EventQueue.h"
-#include "Link.h"
-#include "NetworkInterface.h"
-#include "InterfaceLinkEntry.h"
-#include "ConnectionInterface.h"
-#include "Message.h"
-#include "SendEvent.h"
+#include "../event/EventQueue.h"
+#include "../linking/Link.h"
+#include "../linking/NetworkInterface.h"
+#include "../linking/InterfaceLinkEntry.h"
+#include "../linking/ConnectionInterface.h"
+#include "../message/Message.h"
+#include "../event/SendEvent.h"
 
 #include <string>
 #include <iostream>

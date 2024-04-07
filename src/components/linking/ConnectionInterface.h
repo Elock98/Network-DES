@@ -1,7 +1,7 @@
 #ifndef _CONNECTION_INTERFACE_H_
 #define _CONNECTION_INTERFACE_H_
 
-#include "Message.h"
+#include "../message/Message.h"
 
 #include <string>
 
