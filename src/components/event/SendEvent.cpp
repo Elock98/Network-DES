@@ -6,7 +6,7 @@ SendEvent::SendEvent(Connection* self, double time, Message* message){
     _msg = message;
 }
 
-void SendEvent::execute(){
+void SendEvent::execute(double current_time){
     _self->send(_msg, exec_time);
 }
 

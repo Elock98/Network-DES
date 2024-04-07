@@ -12,7 +12,8 @@ void SimEngine::run(){
         cout << "-----------Event-----------" << endl;
         Event* e = q->get_event();
         cout << "Event time: " << e->get_time() << endl;
-        e->execute();
+        this->sim_time = e->get_time();
+        e->execute(this->get_time());
     }
 }
 

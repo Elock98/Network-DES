@@ -23,14 +23,15 @@ class Router: public Connection{
         EventQueue* _q;
 
         int _num_of_interfaces;
+        double _routing_delay;
 
     public:
-        Router(EventQueue* queue, std::vector<NetInterface*> interfaces);
+        Router(EventQueue* queue, std::vector<NetInterface*> interfaces, double routing_delay);
 
         int connect_to_interface(Link* link, std::string interface);
         int disconnect_from_interface(std::string interface);
 
-        void recv(Message* msg);
+        void recv(Message* msg, double recv_time);
 
         void send(Message* msg, double time);
 };

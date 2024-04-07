@@ -25,6 +25,6 @@ class Node: public Connection{
         std::string get_addr();
         NetInterface* get_interface();
         void send(Message* msg, double time);
-        void recv(Message* msg);
+        void recv(Message* msg, double recv_time);
 };
 #endif

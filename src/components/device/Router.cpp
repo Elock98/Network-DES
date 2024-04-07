@@ -2,9 +2,10 @@
 
 using namespace std;
 
-Router::Router(EventQueue* queue, std::vector<NetInterface*> interfaces){
+Router::Router(EventQueue* queue, std::vector<NetInterface*> interfaces, double routing_delay){
     _q = queue;
     _num_of_interfaces = interfaces.size();
+    _routing_delay = routing_delay;
 
     /*
         Check that multiple interfaces don't belong
@@ -54,11 +55,11 @@ int Router::disconnect_from_interface(string interface_ip){
     return -1;
 }
 
-void Router::recv(Message* msg){
+void Router::recv(Message* msg, double recv_time){
     cout << "Router received a message\n" <<
             "From: " << msg->get_src()->get_ip_addr() <<
             "\nTo: " << msg->get_dst()->get_ip_addr() << endl;
-    _q->add_event(new SendEvent(this, 2, msg)); // change delay from 2 later
+    _q->add_event(new SendEvent(this, recv_time + this->_routing_delay, msg));
 }
 
 void Router::send(Message* msg, double time){
@@ -70,7 +71,7 @@ void Router::send(Message* msg, double time){
     std::string dst = msg->get_dst()->get_network_addr();
     for(int i = 0; i < _interfaces.size(); i++){
         if(_interfaces[i]->get_netInterface()->get_network_addr() == dst){
-            _interfaces[i]->get_link()->transmit(msg, this, 2);
+            _interfaces[i]->get_link()->transmit(msg, this, time);
             return;
         }
     }

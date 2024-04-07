@@ -6,8 +6,8 @@ RecvEvent::RecvEvent(Connection* self, double time, Message* message){
     _msg = message;
 }
 
-void RecvEvent::execute(){
-    _self->recv(_msg);
+void RecvEvent::execute(double current_time){
+    _self->recv(_msg, current_time);
 }
 
 double RecvEvent::get_time(){

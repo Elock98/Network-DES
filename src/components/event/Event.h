@@ -8,7 +8,7 @@ class Event{
 
     public:
         virtual double get_time() = 0;
-        virtual void execute() = 0;
+        virtual void execute(double current_time) = 0;
 
         // Used to sort Events by time.
         bool operator< (const Event &other) const {

@@ -15,7 +15,7 @@ class SendEvent: public Event{
 
     public:
         SendEvent(Connection* self, double time, Message* message);
-        void execute();
+        void execute(double current_time);
         double get_time();
 };
 #endif

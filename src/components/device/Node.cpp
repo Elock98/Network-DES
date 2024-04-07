@@ -10,7 +10,7 @@ void Node::send(Message* msg, double time){
     conn->transmit(msg, this, time);
 }
 
-void Node::recv(Message* msg){
+void Node::recv(Message* msg, double recv_time){
     std::cout << "Node: " << _interface->get_ip_addr() <<
                  "\nReceived message: " << msg->get_message() <<
                  "\nFrom: " << msg->get_src()->get_ip_addr() << std::endl;

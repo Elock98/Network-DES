@@ -27,7 +27,7 @@ int main(){
     std::vector<NetInterface*> r1_int = {new NetInterface("192.168.0.1", "255.255.255.0"),
                                          new NetInterface("192.168.1.1", "255.255.255.0")};
 
-    Router r1(&q, r1_int);
+    Router r1(&q, r1_int, 0.3);
 
     r1.connect_to_interface(&link1, "192.168.0.1");
 
