@@ -55,7 +55,7 @@ build_area:
 
 # Delete the build directory and program
 clean:
-	rm -rf $(BUILD) program
+	rm -rf $(BUILD) run
 
 # These rules do not correspond to a specific file
 .PHONY: build clean
